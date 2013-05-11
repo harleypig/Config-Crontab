@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# pars parsing info
+# ext  extended info
+# test don't run jobs
+
+nobuffer='stdbuf -i0 -o0 -e0'
+crond='/usr/sbin/crond'
+switches='-nx pars,ext,test'
+
+$nobuffer $crond $switches 2>&1 | grep -B1 bad
