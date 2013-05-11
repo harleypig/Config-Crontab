@@ -106,6 +106,7 @@ HOME=/
 *	*	*	*/1,5-6	*	admin	month */1,5-6
 *	*	*	*/1,may-6	*	admin	month */1,may-6
 *	*	*	*	*/1,5-6	admin	dow */1,5-6
+*	*	*	*	*/1,fri-6	admin	dow */1,5-6
 
 # Force crontab to fail so we don't accidentally overwrite anything
 70	25	83	23	88	admin die ugly death
