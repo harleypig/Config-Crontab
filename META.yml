@@ -1,0 +1,13 @@
+--- #YAML:1.0
+name:                Config-Crontab
+version:             1.33
+abstract:            Read/Write Vixie compatible crontab(5) files
+license:             ~
+author:              
+    - Scott Wiersdorf <scott@perlcode.org>
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
