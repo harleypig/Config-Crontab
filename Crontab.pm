@@ -39,7 +39,7 @@ our @ISA = qw(Config::Crontab::Base Config::Crontab::Container);
 use Fcntl;
 use File::Temp qw(:POSIX);
 
-our $VERSION = '1.33';
+our $VERSION = '1.34';
 
 sub init {
     my $self = shift;
@@ -1884,8 +1884,25 @@ use Carp;
 
 our @ISA = qw(Config::Crontab::Base);
 
+# range is either * (which is first-last) or start-end
+# min, hour, and dom: *|\d+-\d+
+# mon and dow:        *|(?:\d+|\w{3})-(?:\d+|\w{3})
+
+# list is comma separated series of numbers or names and/or ranges
+# min, hour, and dom: (?:*|\d+(?:-\d+)?,?)+
+# mon and dow:        (?:*|(?:\d+|\w{3})(?:-(?:\d+|\w{3})?),?)
+
+use constant RE_RANGE_DT  => '(?:\d+-\d+)';
+use constant RE_RANGE_DM  => '(?:(?:\d+|\w{3})-(?:\d+|\w{3}))';
+use constant RE_STEP_DT   => '(?:' . RE_RANGE_DT . ')\/\d+';
+use constant RE_STEP_DM   => '(?:' . RE_RANGE_DM . ')\/\d+';
+
+
+#use constant RE_DT        => '(?:\d+|\*)(?:[-,\/]\d+)*';
+#use constant RE_DM        => '\w{3}(?:,\w{3})*';
 use constant RE_DT        => '(?:\d+|\*)(?:[-,\/]\d+)*';
 use constant RE_DM        => '\w{3}(?:,\w{3})*';
+
 use constant RE_DTELEM    => '(?:\*|' . RE_DT . ')';
 use constant RE_DTMOY     => '(?:\*|' . RE_DT . '|' . RE_DM . ')';
 use constant RE_DTDOW     => RE_DTMOY;
