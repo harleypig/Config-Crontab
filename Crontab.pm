@@ -1892,17 +1892,8 @@ our @ISA = qw(Config::Crontab::Base);
 # min, hour, and dom: (?:*|\d+(?:-\d+)?,?)+
 # mon and dow:        (?:*|(?:\d+|\w{3})(?:-(?:\d+|\w{3})?),?)
 
-use constant RE_RANGE_DT  => '(?:\d+-\d+)';
-use constant RE_RANGE_DM  => '(?:(?:\d+|\w{3})-(?:\d+|\w{3}))';
-use constant RE_STEP_DT   => '(?:' . RE_RANGE_DT . ')\/\d+';
-use constant RE_STEP_DM   => '(?:' . RE_RANGE_DM . ')\/\d+';
-
-
-#use constant RE_DT        => '(?:\d+|\*)(?:[-,\/]\d+)*';
-#use constant RE_DM        => '\w{3}(?:,\w{3})*';
-use constant RE_DT        => '(?:\d+|\*)(?:[-,\/]\d+)*';
+use constant RE_DT        => '(?:\d+|\*)(?:[-,\/](?:\d+|\*))*';
 use constant RE_DM        => '\w{3}(?:,\w{3})*';
-
 use constant RE_DTELEM    => '(?:\*|' . RE_DT . ')';
 use constant RE_DTMOY     => '(?:\*|' . RE_DT . '|' . RE_DM . ')';
 use constant RE_DTDOW     => RE_DTMOY;
