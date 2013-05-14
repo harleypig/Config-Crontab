@@ -1884,7 +1884,7 @@ use Carp;
 
 our @ISA = qw(Config::Crontab::Base);
 
-use constant RE_DT        => '(?:\d+|\*)(?:[-,\/]\d+)*';
+use constant RE_DT        => '(?:\d+|\*)(?:[-,\/](?:\d+|\*))*';
 use constant RE_DM        => '\w{3}(?:,\w{3})*';
 use constant RE_DTELEM    => '(?:\*|' . RE_DT . ')';
 use constant RE_DTMOY     => '(?:\*|' . RE_DT . '|' . RE_DM . ')';
